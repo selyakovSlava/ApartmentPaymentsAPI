@@ -24,11 +24,9 @@ namespace ApartmentPaymentsAPI.Controllers
             _context = context;
         }
 
-        // GET: Payments
-        /*
-        public async Task<IActionResult> Index()
+       /* public async Task<IActionResult> Index()
         {
-            return View(await _context.Payments.ToListAsync());
+            return View();
         }*/
 
         // Get: api/payments

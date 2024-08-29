@@ -2,8 +2,9 @@
 
 * Проект для регистрации ежемесячных платежей
 * Разработка API для работы с MS SQL
+* APModelsLibrary - библиотека моделей, реализация CRUD операций с API
 * ConsoleTestAPI - Консольное приложение для работы с API (CRUD операции)
-* APModelsLibrary - библиотека моделей
+* Paymentsweb - приложение ASP.NET Core MVC для работы с REST API
 
 ## Сведения о проекте
 

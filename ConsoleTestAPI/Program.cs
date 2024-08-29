@@ -1,14 +1,16 @@
 ﻿
 
 
+using APModelsLibrary.Actions;
+using APModelsLibrary.Interfaces;
 using APModelsLibrary.Models;
-using ConsoleTestAPI.Actions;
-using ConsoleTestAPI.Interfaces;
+/*using ConsoleTestAPI.Actions;
+using ConsoleTestAPI.Interfaces;*/
 
 
 Console.WriteLine("Тестирование REST API");
 
-IAction crudActions = new PaymentActions();
+/*IAction crudActions = new PaymentActions();
 
 await crudActions.GetAllAsync();
 
@@ -25,7 +27,12 @@ await crudActions.AddAsync(new PaymentModel() { Period = "202207", TotalSum = 10
 
 await crudActions.EditAsync(new PaymentModel() { Id = 7, Period = "202206", TotalSum = 4231.79 });
 
-await crudActions.DeleteAsync(8);
+await crudActions.DeleteAsync(8);*/
+
+
+IAction action = new PaymentActions();
+
+IEnumerable<PaymentModel> payments = await action.GetAllAsync();
 
 
 
