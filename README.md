@@ -36,3 +36,6 @@
 * `https://jasonwatmore.com/c-restsharp-http-put-request-examples-in-net`
 * `https://devhops.ru/code/dotnet/rest/`
 * `https://code-maze.com/httpclient-example-aspnet-core-post-put-delete/`
+
+## Полезные ссылки для работы с графиками
+* `https://www.c-sharpcorner.com/article/creating-charts-with-asp-net-core-mvc-using-google-chart-api-part-two/`
