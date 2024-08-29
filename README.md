@@ -2,7 +2,7 @@
 
 * Проект для регистрации ежемесячных платежей
 * Разработка API для работы с MS SQL
-* Консольное приложение для работы с API
+* ConsoleTestAPI - Консольное приложение для работы с API (CRUD операции)
 * APModelsLibrary - библиотека моделей
 
 ## Сведения о проекте
@@ -28,5 +28,10 @@
 * GET: api/payments
 * GET: api/payments/5
 * POST: api/payments
-* PUT: api/payments
+* PUT: api/payments/5
 * DELETE: api/payments/5
+
+## Полезные ссылки для работы с API
+* `https://jasonwatmore.com/c-restsharp-http-put-request-examples-in-net`
+* `https://devhops.ru/code/dotnet/rest/`
+* `https://code-maze.com/httpclient-example-aspnet-core-post-put-delete/`
