@@ -28,5 +28,5 @@
 * GET: api/payments
 * GET: api/payments/5
 * POST: api/payments
-* PUT: api/payments
+* PUT: api/payments/5
 * DELETE: api/payments/5
