@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApartmentPaymentsAPI", "ApartmentPaymentsAPI\ApartmentPaymentsAPI.csproj", "{D450C963-21B1-4F79-A46A-50C8EB741C81}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APModelsLibrary", "APModelsLibrary\APModelsLibrary.csproj", "{817C3F3B-90BD-4D65-B3F7-BA7A6D153A82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D450C963-21B1-4F79-A46A-50C8EB741C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D450C963-21B1-4F79-A46A-50C8EB741C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D450C963-21B1-4F79-A46A-50C8EB741C81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{817C3F3B-90BD-4D65-B3F7-BA7A6D153A82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{817C3F3B-90BD-4D65-B3F7-BA7A6D153A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{817C3F3B-90BD-4D65-B3F7-BA7A6D153A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{817C3F3B-90BD-4D65-B3F7-BA7A6D153A82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
