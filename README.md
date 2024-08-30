@@ -1,11 +1,11 @@
 # Проект REST API
 
 * Проект для регистрации ежемесячных платежей
-* ApartmentPaymentsAPI - API для работы с MS SQL
-* APModelsLibrary - библиотека моделей, реализация CRUD операций с API
-* ConsoleTestAPI - консольное приложение для работы с API (CRUD операции)
-* PaymentsWeb - приложение ASP.NET Core MVC для работы с REST API
-* ConsoleRabbitMQ - консольное приложение для чтения сообщений из RabbitMQ и отправки сообщений в Telegram
+* **ApartmentPaymentsAPI** - API для работы с MS SQL
+* **APModelsLibrary** - библиотека моделей, реализация CRUD операций с API
+* **ConsoleTestAPI** - консольное приложение для работы с API (CRUD операции)
+* **PaymentsWeb** - приложение ASP.NET Core MVC для работы с REST API
+* **ConsoleRabbitMQ** - консольное приложение для чтения сообщений из RabbitMQ и отправки сообщений в Telegram
 
 ## Сведения о проекте
 
@@ -28,23 +28,21 @@
 4. Далее можно запустить один из клиентов: PaymentsWeb или ConsoleTestAPI
 
 ## Пакеты для установки
-
 * `Install-Package Microsoft.EntityFrameworkCore`
 * `Install-Package Microsoft.EntityFrameworkCore.SqlServer`
 * `Install-Package Microsoft.EntityFrameworkCore.Tools`
 * `Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design`
 
 ## Создание бд перед запуском
-
 * `Add-Migration CreateDB`
 * `Update-Database`
 
 ## Реализованные API
-* GET: api/payments
-* GET: api/payments/5
-* POST: api/payments
-* PUT: api/payments/5
-* DELETE: api/payments/5
+* **GET**: api/payments
+* **GET**: api/payments/5
+* **POST**: api/payments
+* **PUT**: api/payments/5
+* **DELETE**: api/payments/5
 
 ## Полезные ссылки для работы с API
 * `https://jasonwatmore.com/c-restsharp-http-put-request-examples-in-net`
