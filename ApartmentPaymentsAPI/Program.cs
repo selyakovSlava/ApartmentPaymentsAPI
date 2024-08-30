@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ApartmentPaymentsAPI.DataContexts;
+using ApartmentPaymentsAPI.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ?? 
     throw new InvalidOperationException("Connection string for 'ApartmentPaymentsAPI' not found.")));
+
+builder.Services.AddScoped<IRabitMQProducer, RabitMQProducer>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

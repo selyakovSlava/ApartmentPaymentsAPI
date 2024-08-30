@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using APModelsLibrary.Models;
 using ApartmentPaymentsAPI.DataContexts;
+using ApartmentPaymentsAPI.RabbitMQ;
 
 namespace ApartmentPaymentsAPI.Controllers
 {
@@ -19,15 +20,23 @@ namespace ApartmentPaymentsAPI.Controllers
         /// </summary>
         private readonly DataContext _context;
 
-        public PaymentsController(DataContext context)
+        /// <summary>
+        /// RabbitMQ.
+        /// </summary>
+        private readonly IRabitMQProducer _rabitMQProducer;
+
+        /// <summary>
+        /// Логгер.
+        /// </summary>
+        private readonly ILogger<PaymentsController> _logger;
+
+        public PaymentsController(DataContext context, IRabitMQProducer rabitMQProducer, ILogger<PaymentsController> logger)
         {
             _context = context;
+            _rabitMQProducer = rabitMQProducer;
+            _logger = logger;
         }
 
-       /* public async Task<IActionResult> Index()
-        {
-            return View();
-        }*/
 
         // Get: api/payments
         [HttpGet]
@@ -78,6 +87,9 @@ namespace ApartmentPaymentsAPI.Controllers
             {
                 _context.Add(paymentModel);
                 await _context.SaveChangesAsync();
+
+                SendMessageToRabbitMQ($"Создан новый период {paymentModel.Period}");
+
                 return CreatedAtAction("GetPayment", new { id = paymentModel.Id }, paymentModel);
             }
             else
@@ -140,121 +152,39 @@ namespace ApartmentPaymentsAPI.Controllers
             if (paymentModel != null)
             {
                 _context.Payments.Remove(paymentModel);
+                await _context.SaveChangesAsync();
+
+                SendMessageToRabbitMQ($"Удален период {paymentModel.Period}");
             }
 
-            await _context.SaveChangesAsync();
             return Ok("Deleted information successfully!");
         }
-
-        /*// GET: Payments/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Payments/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Period,TotalSum")] PaymentModel paymentModel)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(paymentModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(paymentModel);
-        }
-
-        // GET: Payments/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var paymentModel = await _context.Payments.FindAsync(id);
-            if (paymentModel == null)
-            {
-                return NotFound();
-            }
-            return View(paymentModel);
-        }
-
-        // POST: Payments/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Period,TotalSum")] PaymentModel paymentModel)
-        {
-            if (id != paymentModel.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(paymentModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PaymentModelExists(paymentModel.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(paymentModel);
-        }
-
-        // GET: Payments/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var paymentModel = await _context.Payments
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (paymentModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(paymentModel);
-        }
-
-        // POST: Payments/Delete/5
-        [ValidateAntiForgeryToken]
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var paymentModel = await _context.Payments.FindAsync(id);
-            if (paymentModel != null)
-            {
-                _context.Payments.Remove(paymentModel);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }*/
 
         private bool PaymentModelExists(int id)
         {
             return _context.Payments.Any(e => e.Id == id);
+        }
+
+        /// <summary>
+        /// Отправка сообщения в очередь RabbitMQ.
+        /// </summary>
+        /// <param name="message">Текст сообщения.</param>
+        private async void SendMessageToRabbitMQ(string message)
+        {
+            if (_rabitMQProducer != null)
+            {
+                bool result = await _rabitMQProducer.SendPeriodMessage(message);
+
+                if (!result && _logger != null)
+                {
+                    _logger.LogError($"{DateTime.Now}: Не удалось отправить сообщение в RabbitMQ");
+                }
+
+                if (result && _logger != null)
+                {
+                    _logger.LogInformation($"{DateTime.Now}: Cообщение отправлено в RabbitMQ");
+                }
+            }
         }
     }
 }
