@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APModelsLibrary", "APModels
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTestAPI", "ConsoleTestAPI\ConsoleTestAPI.csproj", "{2EB6FA64-C0E6-455E-B172-F14229213423}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsWeb", "PaymentsWeb\PaymentsWeb.csproj", "{C404DC65-3E71-4A73-A943-2EAFAEAD267E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentsWeb", "PaymentsWeb\PaymentsWeb.csproj", "{C404DC65-3E71-4A73-A943-2EAFAEAD267E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleRabbitMQ", "ConsoleRabbitMQ\ConsoleRabbitMQ.csproj", "{6AF4BB33-ABAF-4886-BAC2-89CB7860C788}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C404DC65-3E71-4A73-A943-2EAFAEAD267E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C404DC65-3E71-4A73-A943-2EAFAEAD267E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C404DC65-3E71-4A73-A943-2EAFAEAD267E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AF4BB33-ABAF-4886-BAC2-89CB7860C788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF4BB33-ABAF-4886-BAC2-89CB7860C788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF4BB33-ABAF-4886-BAC2-89CB7860C788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF4BB33-ABAF-4886-BAC2-89CB7860C788}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

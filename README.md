@@ -1,10 +1,11 @@
 # Проект REST API
 
 * Проект для регистрации ежемесячных платежей
-* Разработка API для работы с MS SQL
+* ApartmentPaymentsAPI - API для работы с MS SQL
 * APModelsLibrary - библиотека моделей, реализация CRUD операций с API
-* ConsoleTestAPI - Консольное приложение для работы с API (CRUD операции)
+* ConsoleTestAPI - консольное приложение для работы с API (CRUD операции)
 * PaymentsWeb - приложение ASP.NET Core MVC для работы с REST API
+* ConsoleRabbitMQ - консольное приложение для чтения сообщений из RabbitMQ и отправки сообщений в Telegram
 
 ## Сведения о проекте
 
@@ -12,6 +13,19 @@
 * REST API
 * MS SQL
 * Entity Framework
+* RabbitMQ
+* Telegram.Bot
+
+### Порядок сборки
+1. APModelsLibrary
+2. ApartmentPaymentsAPI
+3. ConsoleRabbitMQ
+4. Далее без разницы: ConsoleTestAPI или PaymentsWeb
+
+### Порядок запуска
+1. ApartmentPaymentsAPI
+2. ConsoleRabbitMQ
+4. Далее можно запустить один из клиентов: PaymentsWeb или ConsoleTestAPI
 
 ## Пакеты для установки
 
@@ -39,3 +53,15 @@
 
 ## Полезные ссылки для работы с графиками
 * `https://www.c-sharpcorner.com/article/creating-charts-with-asp-net-core-mvc-using-google-chart-api-part-two/`
+
+## Полезные ссылки для работы с RabbitMQ
+* `https://www.c-sharpcorner.com/article/rabbitmq-message-queue-using-net-core-6-web-api/`
+
+## Установка и запуск RabbitMQ
+* `docker pull rabbitmq:3-management`
+* `docker run --rm -it -p 15672:15672 -p 5672:5672 rabbitmq:3-management`
+* RabbitMQ будет доступен по адресу http://localhost:15672/
+
+## Установка Telegram.Bot
+* `Install-Package Telegram.Bot`
+
